@@ -45,23 +45,42 @@ public class Heap<Key extends Comparable<Key>>{
     private void heapDecreaseKey(int index, Key key){
         if (key.compareTo(getElement(index))>0)
             throw new IllegalArgumentException();
+        if (key.compareTo(getElement(index))<0)
         setElement(index,key);
-        while (index>1 && getElement(getParent(index)).compareTo(getElement(index))>=0) {
+        while (index>0 && getElement(getParent(index)).compareTo(getElement(index))>=0) {
             swap(index, getParent(index));
             index=getParent(index);
         }
     }
 
-    void insert(Key key){
+     void insert(Key key){
         setElement(size++,key);
         heapDecreaseKey(size-1,key);
     }
 
+    Key delete(int index){
+         if (index>=size && index<0)
+             throw new IndexOutOfBoundsException();
+         Key minimum=getElement(0);
+         setElement(0,getElement(size-1));
+         size--;
+         minHeapify(0);
+         return minimum;
+    }
+
+
+
 
 /**Getters*/
     @SuppressWarnings("unchecked")
-    private Key getElement(int index){
+    public Key getElement(int index){
+        if (index>=size)
+            throw new IndexOutOfBoundsException();
         return (Key) heapArray[index];
+    }
+
+    public int getSize(){
+        return size;
     }
 
     private int getParent(int index){
