@@ -73,13 +73,13 @@ public class Heap<Key extends Comparable<Key>>{
 
 /**Getters*/
     @SuppressWarnings("unchecked")
-    public Key getElement(int index){
+     Key getElement(int index){
         if (index>=size)
             throw new IndexOutOfBoundsException();
         return (Key) heapArray[index];
     }
 
-    public int getSize(){
+    int getSize(){
         return size;
     }
 
@@ -116,4 +116,5 @@ public class Heap<Key extends Comparable<Key>>{
         }
         return stringBuilder.toString();
     }
+
 }
