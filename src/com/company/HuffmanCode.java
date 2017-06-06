@@ -1,9 +1,4 @@
 package com.company;
-
-import sun.awt.image.ImageWatched;
-import sun.security.krb5.internal.crypto.Des;
-
-import javax.print.DocFlavor;
 import java.awt.*;
 import java.io.*;
 import java.util.*;
